@@ -45,16 +45,55 @@ array_3 = [3, 4, 15, 20, 30, 70, 80, 120]
 палиндромом. Затем она должна выводить соответствующее сообщение.
 """
 
-print('enter a word or letters')
-str = input()
-def is_poly(string) :
-    unique = 0
-    for i in str :
-        if(str.count(i) % 2 != 0) :
-            unique += 1
-    if(unique <= 1) :
-        print("poly")
-    else :
-        print("not poly")
+# print('enter a word or letters')
+# str = input()
+# def is_poly(string) :
+#     unique = 0
+#     for i in str :
+#         if(str.count(i) % 2 != 0) :
+#             unique += 1
+#     if(unique <= 1) :
+#         print("poly")
+#     else :
+#         print("not poly")
         
-is_poly(str)
+# is_poly(str)
+
+"""
+Задача 3. Словарь синонимов
+Одна библиотека поручила вам написать программу для оцифровки словарей
+синонимов. На вход в программу подаётся N пар слов. Каждое слово является
+синонимом для своего парного слова.
+Реализуйте код, который составляет словарь синонимов (все слова в словаре
+различны), затем запрашивает у пользователя слово и выводит на экран его
+синоним. Обеспечьте контроль ввода: если такого слова нет, выведите ошибку
+и запросите слово ещё раз. При этом проверка не должна зависеть от регистра
+символов.
+"""
+
+print('How many words in dictionary?')
+dict_len = int(input())
+def dict_maker (N) :
+    dict = {}
+    i = 0
+    while i < N :
+        i += 1
+        print(f"enter {i} pair, example word1-word2 ")
+        pair = input()
+        dict_pair = pair.split("-")
+        dict[dict_pair[0].lower()] = dict_pair[1].lower()
+    return dict
+
+dict = dict_maker(dict_len)
+
+def find_key_in_dict (key, dict) :
+    if key in dict:
+        return dict[key]
+    else:
+        return "Key does not exist in the dictionary."
+        
+print("please enter word to search in dictionary")
+word = input().lower()
+
+print(find_key_in_dict(word,dict))
+        
